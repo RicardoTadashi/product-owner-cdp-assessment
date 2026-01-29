@@ -119,10 +119,54 @@ This balances **short-term expectations** with **long-term product credibility, 
 ## Assignment 2 – Backlog Refinement & User Stories
 ...
 
+
 ---
 
-## Assignment 3 – Identity Resolution
-...
+# 🧬 Assignment 3 – CDP Logic & Identity Resolution
+
+## 1️⃣ Identity Merge Logic (9:15 AM)
+
+At **9:15 AM**, both the Laptop (cookieID: ABC-123) and the Phone (cookieID: XYZ-789) have been authenticated with the same identifier (**cristiano@gmail.com**).
+
+At this point, I would **merge the two anonymous profiles into a single unified user profile**, using the authenticated identifier as the primary key.
+
+However, this merge should be:
+- **Logical, not destructive**  
+- Fully **auditable and reversible**
+
+All historical events remain linked to their original identifiers (cookieIDs), while the unified profile maintains a clear mapping between:
+- cookieID → authenticated user
+- event → original source
+
+This avoids hard-coded data mutations and preserves a reliable audit trail.
+
+---
+
+## 2️⃣ Edge Case – Login Change on the Same Device (9:20 AM)
+
+When the user logs out of **cristiano@gmail.com** on the Phone and logs back in as **messi@gmail.com**, the system should **not retroactively reassign past events**.
+
+Specifically:
+- Events from **9:05–9:15 AM** remain associated with the profile authenticated as **Cristiano**
+- New events after **9:20 AM** are attributed to **Messi**
+
+The phone’s cookieID continues to exist as a shared device identifier, but **identity ownership is determined by authentication state at the time of each event**.
+
+This ensures historical accuracy and prevents unintended cross-user data leakage.
+
+---
+
+## 3️⃣ Product Decision Considerations
+
+There is no single correct technical solution for this scenario. As a Product Owner, I would consider the following factors when defining product behavior:
+
+- **Data Accuracy:** Events must reflect the user’s state at the moment they occurred.
+- **Privacy & Compliance:** Prevent exposing one user’s behavior to another, especially in shared-device scenarios (GDPR, consent, and user trust).
+- **Auditability:** Identity merges and splits must be traceable and reversible.
+- **User Intent:** Logging in as a different user represents an explicit change in identity and should be respected.
+- **Customer Expectations:** Marketers and analysts need predictable, explainable segmentation behavior.
+
+Balancing these factors, I would favor a **conservative identity resolution model** that prioritizes correctness, privacy, and trust over aggressive merging.
 
 ---
 

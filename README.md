@@ -359,6 +359,3 @@ For this reason, identity merging must prioritize accuracy, privacy, and clear s
 
 ---
 
-## Tools Used
-- ChatGPT (for structuring and clarity)
-- Personal experience in CDP and B2B SaaS products

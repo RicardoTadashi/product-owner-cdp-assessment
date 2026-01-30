@@ -297,8 +297,65 @@ This reduces rework, frustration, and misalignment over time.
 
 ---
 
-## Assignment 5 – CDP Fundamentals
-...
+# 📚 Assignment 5 – CDP Fundamentals
+
+## 1️⃣ Event Types
+
+### Track Event
+A **track event** records a specific action a user performs, such as clicking a button, completing a purchase, or submitting a form.
+
+**Example:**  
+A `Purchase Completed` event fires when a user finishes a checkout.
+
+---
+
+### Identify Event
+An **identify event** connects an anonymous user or device to a known user profile once an identifier (such as email or userID) becomes available.
+
+**Example:**  
+When a user logs in or signs up, an identify event links their previous anonymous activity to their authenticated profile.
+
+---
+
+### Page Event
+A **page event** captures page-level interactions, such as page views, URLs, referrers, or load errors, providing context about how users navigate the product.
+
+**Example:**  
+A `Page Viewed` event fires when a user visits a product detail page.
+
+---
+
+## 2️⃣ Identifier Types
+
+### UserID
+A **userID** is a stable, unique identifier assigned to a user once they are authenticated.  
+It is used to consistently associate events and attributes with a specific user across sessions and devices.
+
+---
+
+### AnonymousID
+An **anonymousID** identifies users who have not yet logged in.  
+It allows the CDP to track pre-authentication behavior and later link it to a user profile once the user becomes known.
+
+---
+
+### Internal Database ID
+The **internal database ID** is the system’s primary identifier used to consolidate and manage all related identifiers (userID, anonymousID, external IDs).
+
+It acts as the **single source of truth** for identity resolution and ensures consistent data management across integrations and storage layers.
+
+---
+
+## 3️⃣ Identity Merging Risk
+
+CDPs merge user profiles to create a unified view of the customer journey, especially when users move from anonymous to authenticated states or use multiple devices.
+
+The primary risk of incorrect identity merging is **data leakage and loss of trust**, where one user’s behavior or attributes are incorrectly attributed to another.
+
+For example, on shared devices, an incorrect merge could cause a user who already purchased a product to continue seeing acquisition banners or receive irrelevant campaigns.  
+Beyond user experience issues, this can lead to **incorrect attribution, compliance risks, and erosion of customer trust**.
+
+For this reason, identity merging must prioritize accuracy, privacy, and clear separation of user intent.
 
 ---
 
